@@ -4,7 +4,9 @@
 
 Code and results for the paper by Prince Oppong Boakye, Poshan Niraula and Edzer Pebesma (Institute for Geoinformatics, University of Münster).
 
-The analysis covers three COVID-19 waves: the Ancestral wave (Wave 1, March–May 2020), winter 2020–2021 (Wave 2, December–February) and the Omicron wave (Wave 3, December 2021–February 2022). It models cases at two resolutions. New York City (NYC) uses 100 m grid cells, with weekly cases for Modified ZIP Code Tabulation Areas (MODZCTAs) allocated to cells by population. Utah uses daily county counts. Bayesian spatiotemporal models fitted with INLA combine a BYM2 spatial random effect, a random-walk temporal random effect, a Type IV space-time interaction and covariates built from point-of-interest (POI) visit data. The Proportion of Cases Attributable to Mobility (PCAtM) is estimated in-sample and under spatial holdouts.
+The analysis asks how much COVID-19 risk is associated with human mobility, and how the answer depends on spatial resolution. It compares New York City (NYC), modelled on 100 m grid cells, with Utah, modelled by county. NYC reports weekly cases for Modified ZIP Code Tabulation Areas (MODZCTAs), which are allocated to the grid cells by population, and Utah reports daily county counts. Both settings cover three waves: the Ancestral wave (Wave 1, March–May 2020), winter 2020–2021 (Wave 2, December–February) and the Omicron wave (Wave 3, December 2021–February 2022).
+
+Bayesian spatiotemporal models fitted with INLA relate cases to covariates built from point-of-interest (POI) visit data. They include a BYM2 spatial random effect, a random-walk temporal random effect and a Type IV space-time interaction. The Proportion of Cases Attributable to Mobility (PCAtM) summarises the mobility contribution, in-sample and under spatial holdouts.
 
 ## Reproducing the figures and tables
 
