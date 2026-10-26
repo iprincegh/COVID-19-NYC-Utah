@@ -1,0 +1,287 @@
+setting,wave,term,category,amlp,term_total
+NY,1,ext_prev_std,Commercial & Mixed-Use Buildings,0.00612616043516291,0.200849175884053
+NY,1,ext_prev_std,Education,0.00347581880507896,0.200849175884053
+NY,1,ext_prev_std,Essential & Services,0.0463170974872343,0.200849175884053
+NY,1,ext_prev_std,Food & Beverage,0.0183554407850949,0.200849175884053
+NY,1,ext_prev_std,Industrial & Construction,0.0310647234515242,0.200849175884053
+NY,1,ext_prev_std,Other,9.19691154071205e-05,0.200849175884053
+NY,1,ext_prev_std,Recreation & Entertainment,0.0366789273492004,0.200849175884053
+NY,1,ext_prev_std,Religious Organizations,7.72201578365065e-05,0.200849175884053
+NY,1,ext_prev_std,Retail & Trade,0.0570774138796231,0.200849175884053
+NY,1,ext_prev_std,Transportation,0.00165052020935926,0.200849175884053
+NY,1,ext_prev_std,Unallocated,-6.61157914689826e-05,0.200849175884053
+NY,1,own_prev_std,Commercial & Mixed-Use Buildings,0.0110382773400476,0.633488492726119
+NY,1,own_prev_std,Education,0.00811711742154952,0.633488492726119
+NY,1,own_prev_std,Essential & Services,0.147731240196601,0.633488492726119
+NY,1,own_prev_std,Food & Beverage,0.105860953960826,0.633488492726119
+NY,1,own_prev_std,Industrial & Construction,0.0694712917733924,0.633488492726119
+NY,1,own_prev_std,Other,0.000109781920925283,0.633488492726119
+NY,1,own_prev_std,Recreation & Entertainment,0.0633073438651107,0.633488492726119
+NY,1,own_prev_std,Religious Organizations,0.000356478946010837,0.633488492726119
+NY,1,own_prev_std,Retail & Trade,0.220230490030806,0.633488492726119
+NY,1,own_prev_std,Transportation,0.00746653938189344,0.633488492726119
+NY,1,own_prev_std,Unallocated,-0.000201022111043762,0.633488492726119
+NY,1,mob_weighted,Commercial & Mixed-Use Buildings,2.4826092455397e-06,-8.34113084609028e-05
+NY,1,mob_weighted,Education,-1.79877098335684e-06,-8.34113084609028e-05
+NY,1,mob_weighted,Essential & Services,-1.45943877567282e-05,-8.34113084609028e-05
+NY,1,mob_weighted,Food & Beverage,-1.3625247598625e-05,-8.34113084609028e-05
+NY,1,mob_weighted,Industrial & Construction,-1.19847385973027e-05,-8.34113084609028e-05
+NY,1,mob_weighted,Other,-2.61173689238749e-08,-8.34113084609028e-05
+NY,1,mob_weighted,Recreation & Entertainment,-1.36975917040784e-05,-8.34113084609028e-05
+NY,1,mob_weighted,Religious Organizations,9.68225017214191e-09,-8.34113084609028e-05
+NY,1,mob_weighted,Retail & Trade,-2.95575015714285e-05,-8.34113084609028e-05
+NY,1,mob_weighted,Transportation,-6.19244376171031e-07,-8.34113084609028e-05
+NY,1,mob_weighted,Unallocated,-1.80331267028809e-20,-8.34113084609028e-05
+NY,1,mob_spatial_lag_std,Commercial & Mixed-Use Buildings,3.49164487164116e-06,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Education,-4.64123755022064e-06,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Essential & Services,-3.63848433587006e-05,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Food & Beverage,-3.29845324398486e-05,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Industrial & Construction,-3.2424831206681e-05,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Other,-3.80477777107154e-08,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Recreation & Entertainment,-3.57758405389483e-05,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Religious Organizations,3.24688902422157e-08,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Retail & Trade,-7.14321311686995e-05,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Transportation,-1.60051671931725e-06,-0.000211757866998243
+NY,1,mob_spatial_lag_std,Unallocated,-4.34534406502004e-20,-0.000211757866998243
+NY,2,ext_prev_std,Commercial & Mixed-Use Buildings,0.000321889722820224,0.00904499393148613
+NY,2,ext_prev_std,Education,-5.69736548911591e-05,0.00904499393148613
+NY,2,ext_prev_std,Essential & Services,0.00322815296649144,0.00904499393148613
+NY,2,ext_prev_std,Food & Beverage,0.00115835901336556,0.00904499393148613
+NY,2,ext_prev_std,Industrial & Construction,0.00130645759035886,0.00904499393148613
+NY,2,ext_prev_std,Other,1.3655805970994e-06,0.00904499393148613
+NY,2,ext_prev_std,Recreation & Entertainment,-2.96665786000631e-05,0.00904499393148613
+NY,2,ext_prev_std,Religious Organizations,2.54723521344193e-05,0.00904499393148613
+NY,2,ext_prev_std,Retail & Trade,0.0029555525447884,0.00904499393148613
+NY,2,ext_prev_std,Transportation,0.00013438439442135,0.00904499393148613
+NY,2,ext_prev_std,Unallocated,1.59634026384364e-18,0.00904499393148613
+NY,2,own_prev_std,Commercial & Mixed-Use Buildings,-0.00160200579764943,0.0263087383459708
+NY,2,own_prev_std,Education,-0.000763262403092221,0.0263087383459708
+NY,2,own_prev_std,Essential & Services,0.00957303480416583,0.0263087383459708
+NY,2,own_prev_std,Food & Beverage,0.00514784060919524,0.0263087383459708
+NY,2,own_prev_std,Industrial & Construction,0.00177383442905762,0.0263087383459708
+NY,2,own_prev_std,Other,-1.08102096834875e-05,0.0263087383459708
+NY,2,own_prev_std,Recreation & Entertainment,-0.000744461578648887,0.0263087383459708
+NY,2,own_prev_std,Religious Organizations,0.000102099369634783,0.0263087383459708
+NY,2,own_prev_std,Retail & Trade,0.0124097415226212,0.0263087383459708
+NY,2,own_prev_std,Transportation,0.000422727600370173,0.0263087383459708
+NY,2,own_prev_std,Unallocated,4.46512619728104e-18,0.0263087383459708
+NY,2,mob_weighted,Commercial & Mixed-Use Buildings,3.01198644239207e-05,-0.000994239039083307
+NY,2,mob_weighted,Education,-2.3380899064819e-05,-0.000994239039083307
+NY,2,mob_weighted,Essential & Services,-0.000197094263261146,-0.000994239039083307
+NY,2,mob_weighted,Food & Beverage,-0.000144172153838982,-0.000994239039083307
+NY,2,mob_weighted,Industrial & Construction,-0.000145674905213027,-0.000994239039083307
+NY,2,mob_weighted,Other,-1.77825171933151e-07,-0.000994239039083307
+NY,2,mob_weighted,Recreation & Entertainment,-0.000163987111160011,-0.000994239039083307
+NY,2,mob_weighted,Religious Organizations,3.69607167614506e-07,-0.000994239039083307
+NY,2,mob_weighted,Retail & Trade,-0.000341583344215688,-0.000994239039083307
+NY,2,mob_weighted,Transportation,-8.65800874923567e-06,-0.000994239039083307
+NY,2,mob_weighted,Unallocated,-2.05292509018191e-19,-0.000994239039083307
+NY,2,mob_spatial_lag_std,Commercial & Mixed-Use Buildings,3.87645218098943e-06,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Education,-2.04264606827712e-06,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Essential & Services,-1.71535418766494e-05,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Food & Beverage,-1.3610105625747e-05,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Industrial & Construction,-1.31169485565914e-05,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Other,-1.12656676132616e-08,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Recreation & Entertainment,-1.53478468982951e-05,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Religious Organizations,5.42981711840808e-08,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Retail & Trade,-3.18799064425441e-05,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Transportation,-7.44675500225897e-07,-8.99761862837698e-05
+NY,2,mob_spatial_lag_std,Unallocated,-1.8850149128542e-20,-8.99761862837698e-05
+NY,2,log_rho_resid,Commercial & Mixed-Use Buildings,-3.00543799997561e-05,0.0010033786655222
+NY,2,log_rho_resid,Education,2.2756275097878e-05,0.0010033786655222
+NY,2,log_rho_resid,Essential & Services,0.000199811439123668,0.0010033786655222
+NY,2,log_rho_resid,Food & Beverage,0.000145585376520912,0.0010033786655222
+NY,2,log_rho_resid,Industrial & Construction,0.000146784282662648,0.0010033786655222
+NY,2,log_rho_resid,Other,1.79304458380798e-07,0.0010033786655222
+NY,2,log_rho_resid,Recreation & Entertainment,0.000165164706565706,0.0010033786655222
+NY,2,log_rho_resid,Religious Organizations,-3.62697769815771e-07,0.0010033786655222
+NY,2,log_rho_resid,Retail & Trade,0.000344767029978323,0.0010033786655222
+NY,2,log_rho_resid,Transportation,8.74732888425826e-06,0.0010033786655222
+NY,2,log_rho_resid,Unallocated,2.06524892120937e-19,0.0010033786655222
+NY,3,ext_prev_std,Commercial & Mixed-Use Buildings,0.0185732455155671,0.400288960717122
+NY,3,ext_prev_std,Education,0.00897352298030948,0.400288960717122
+NY,3,ext_prev_std,Essential & Services,0.0915480542446817,0.400288960717122
+NY,3,ext_prev_std,Food & Beverage,0.0375823295331148,0.400288960717122
+NY,3,ext_prev_std,Industrial & Construction,0.0729726588273732,0.400288960717122
+NY,3,ext_prev_std,Other,0.00014944790948693,0.400288960717122
+NY,3,ext_prev_std,Recreation & Entertainment,0.0672090139362931,0.400288960717122
+NY,3,ext_prev_std,Religious Organizations,0.000125228389569082,0.400288960717122
+NY,3,ext_prev_std,Retail & Trade,0.0998009640166576,0.400288960717122
+NY,3,ext_prev_std,Transportation,0.0033544953640688,0.400288960717122
+NY,3,ext_prev_std,Unallocated,9.42126747838974e-17,0.400288960717122
+NY,3,own_prev_std,Commercial & Mixed-Use Buildings,0.0224585609085224,0.632287444118603
+NY,3,own_prev_std,Education,0.00976919746247935,0.632287444118603
+NY,3,own_prev_std,Essential & Services,0.145782863908561,0.632287444118603
+NY,3,own_prev_std,Food & Beverage,0.102679436263602,0.632287444118603
+NY,3,own_prev_std,Industrial & Construction,0.0843098490160203,0.632287444118603
+NY,3,own_prev_std,Other,0.000141385551331839,0.632287444118603
+NY,3,own_prev_std,Recreation & Entertainment,0.0636919821290294,0.632287444118603
+NY,3,own_prev_std,Religious Organizations,0.000338486031751134,0.632287444118603
+NY,3,own_prev_std,Retail & Trade,0.196693972737901,0.632287444118603
+NY,3,own_prev_std,Transportation,0.00642171010940444,0.632287444118603
+NY,3,own_prev_std,Unallocated,1.20210441837292e-16,0.632287444118603
+NY,3,mob_weighted,Commercial & Mixed-Use Buildings,3.6218065729618e-05,-0.000656111051461564
+NY,3,mob_weighted,Education,-1.69559375878472e-05,-0.000656111051461564
+NY,3,mob_weighted,Essential & Services,-0.00013485548429402,-0.000656111051461564
+NY,3,mob_weighted,Food & Beverage,-0.000103456708989513,-0.000656111051461564
+NY,3,mob_weighted,Industrial & Construction,-8.89535865052315e-05,-0.000656111051461564
+NY,3,mob_weighted,Other,-6.49997147279431e-08,-0.000656111051461564
+NY,3,mob_weighted,Recreation & Entertainment,-0.000117125841970159,-0.000656111051461564
+NY,3,mob_weighted,Religious Organizations,1.26101728985229e-07,-0.000656111051461564
+NY,3,mob_weighted,Retail & Trade,-0.000225604475931175,-0.000656111051461564
+NY,3,mob_weighted,Transportation,-5.43818392749334e-06,-0.000656111051461564
+NY,3,mob_weighted,Unallocated,-1.33064199803538e-19,-0.000656111051461564
+NY,3,mob_spatial_lag_std,Commercial & Mixed-Use Buildings,3.12202585118196e-05,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Education,-1.11295552232935e-05,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Essential & Services,-8.73551455435644e-05,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Food & Beverage,-7.01212001731669e-05,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Industrial & Construction,-5.79326729857193e-05,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Other,-2.21301124215678e-08,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Recreation & Entertainment,-7.53796621072935e-05,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Religious Organizations,1.28749145003709e-07,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Retail & Trade,-0.00015124082876023,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Transportation,-3.50450033520398e-06,-0.00042533668758407
+NY,3,mob_spatial_lag_std,Unallocated,-8.78091168225308e-20,-0.00042533668758407
+NY,3,log_rho_resid,Commercial & Mixed-Use Buildings,-3.48110910640508e-05,0.000744330405537708
+NY,3,log_rho_resid,Education,1.91424584183842e-05,0.000744330405537708
+NY,3,log_rho_resid,Essential & Services,0.000150483784240953,0.000744330405537708
+NY,3,log_rho_resid,Food & Beverage,0.000115394710336084,0.000744330405537708
+NY,3,log_rho_resid,Industrial & Construction,0.000102476771320323,0.000744330405537708
+NY,3,log_rho_resid,Other,7.97025709024671e-08,0.000744330405537708
+NY,3,log_rho_resid,Recreation & Entertainment,0.000133454784115016,0.000744330405537708
+NY,3,log_rho_resid,Religious Organizations,-1.38516068264278e-07,0.000744330405537708
+NY,3,log_rho_resid,Retail & Trade,0.000252140563229624,0.000744330405537708
+NY,3,log_rho_resid,Transportation,6.10723843873648e-06,0.000744330405537708
+NY,3,log_rho_resid,Unallocated,1.47606179048802e-19,0.000744330405537708
+UT,1,ext_prev_std,Commercial & Mixed-Use Buildings,0.0234957011494903,0.141119916014815
+UT,1,ext_prev_std,Education,0.00430218930205223,0.141119916014815
+UT,1,ext_prev_std,Essential & Services,0.0287404824809239,0.141119916014815
+UT,1,ext_prev_std,Food & Beverage,0.0115254407922953,0.141119916014815
+UT,1,ext_prev_std,Industrial & Construction,0.0111611173144626,0.141119916014815
+UT,1,ext_prev_std,Other,0.000979794165002911,0.141119916014815
+UT,1,ext_prev_std,Recreation & Entertainment,0.0236595972298951,0.141119916014815
+UT,1,ext_prev_std,Religious Organizations,3.78407567366356e-05,0.141119916014815
+UT,1,ext_prev_std,Retail & Trade,0.031840210395444,0.141119916014815
+UT,1,ext_prev_std,Transportation,0.00584323817139944,0.141119916014815
+UT,1,ext_prev_std,Unallocated,-0.000465695742887631,0.141119916014815
+UT,1,own_prev_std,Commercial & Mixed-Use Buildings,0.143730519323946,0.941803309284919
+UT,1,own_prev_std,Education,0.0213203397099752,0.941803309284919
+UT,1,own_prev_std,Essential & Services,0.219507008321054,0.941803309284919
+UT,1,own_prev_std,Food & Beverage,0.0923135518784529,0.941803309284919
+UT,1,own_prev_std,Industrial & Construction,0.058310504598827,0.941803309284919
+UT,1,own_prev_std,Other,0.00232354925766597,0.941803309284919
+UT,1,own_prev_std,Recreation & Entertainment,0.0971609754727613,0.941803309284919
+UT,1,own_prev_std,Religious Organizations,0.000394684828514762,0.941803309284919
+UT,1,own_prev_std,Retail & Trade,0.296666393321509,0.941803309284919
+UT,1,own_prev_std,Transportation,0.014538866022408,0.941803309284919
+UT,1,own_prev_std,Unallocated,-0.00446308345019484,0.941803309284919
+UT,1,mob_weighted,Commercial & Mixed-Use Buildings,0.0212141939010024,0.118598356234342
+UT,1,mob_weighted,Education,0.00336345999714938,0.118598356234342
+UT,1,mob_weighted,Essential & Services,0.0269156260342727,0.118598356234342
+UT,1,mob_weighted,Food & Beverage,0.0120057969997478,0.118598356234342
+UT,1,mob_weighted,Industrial & Construction,0.00852960004492827,0.118598356234342
+UT,1,mob_weighted,Other,0.000337310419372419,0.118598356234342
+UT,1,mob_weighted,Recreation & Entertainment,0.00773939021699012,0.118598356234342
+UT,1,mob_weighted,Religious Organizations,6.17078169909482e-05,0.118598356234342
+UT,1,mob_weighted,Retail & Trade,0.0362095844584006,0.118598356234342
+UT,1,mob_weighted,Transportation,0.0022216863454864,0.118598356234342
+UT,1,mob_weighted,Unallocated,1.11274460231831e-15,0.118598356234342
+UT,1,mob_spatial_lag_std,Commercial & Mixed-Use Buildings,0.0154786419447938,0.121713233503238
+UT,1,mob_spatial_lag_std,Education,0.00149374703704976,0.121713233503238
+UT,1,mob_spatial_lag_std,Essential & Services,0.0331727588948092,0.121713233503238
+UT,1,mob_spatial_lag_std,Food & Beverage,0.0132870106399117,0.121713233503238
+UT,1,mob_spatial_lag_std,Industrial & Construction,0.00895403900950682,0.121713233503238
+UT,1,mob_spatial_lag_std,Other,0.00299133910011609,0.121713233503238
+UT,1,mob_spatial_lag_std,Recreation & Entertainment,0.0108079163262577,0.121713233503238
+UT,1,mob_spatial_lag_std,Religious Organizations,0.000289989095151593,0.121713233503238
+UT,1,mob_spatial_lag_std,Retail & Trade,0.034073973651945,0.121713233503238
+UT,1,mob_spatial_lag_std,Transportation,0.00116381780369555,0.121713233503238
+UT,1,mob_spatial_lag_std,Unallocated,4.02219082573533e-16,0.121713233503238
+UT,2,ext_prev_std,Commercial & Mixed-Use Buildings,0.00279324454850841,0.0129217384396265
+UT,2,ext_prev_std,Education,0.000390384571669173,0.0129217384396265
+UT,2,ext_prev_std,Essential & Services,0.00248916736864443,0.0129217384396265
+UT,2,ext_prev_std,Food & Beverage,0.00138101586303079,0.0129217384396265
+UT,2,ext_prev_std,Industrial & Construction,0.000874855203643721,0.0129217384396265
+UT,2,ext_prev_std,Other,0.000207981664385489,0.0129217384396265
+UT,2,ext_prev_std,Recreation & Entertainment,0.00157339358099379,0.0129217384396265
+UT,2,ext_prev_std,Religious Organizations,1.59989052397533e-06,0.0129217384396265
+UT,2,ext_prev_std,Retail & Trade,0.00311037139520326,0.0129217384396265
+UT,2,ext_prev_std,Transportation,0.000109484488804907,0.0129217384396265
+UT,2,ext_prev_std,Unallocated,-9.76013578146381e-06,0.0129217384396265
+UT,2,own_prev_std,Commercial & Mixed-Use Buildings,0.0269607616350704,0.151839895359236
+UT,2,own_prev_std,Education,0.00422638019145864,0.151839895359236
+UT,2,own_prev_std,Essential & Services,0.0357286927157686,0.151839895359236
+UT,2,own_prev_std,Food & Beverage,0.0169983082858078,0.151839895359236
+UT,2,own_prev_std,Industrial & Construction,0.00979778944578389,0.151839895359236
+UT,2,own_prev_std,Other,0.000896671019566557,0.151839895359236
+UT,2,own_prev_std,Recreation & Entertainment,0.0112320222570961,0.151839895359236
+UT,2,own_prev_std,Religious Organizations,0.000106445563580985,0.151839895359236
+UT,2,own_prev_std,Retail & Trade,0.0447160724228686,0.151839895359236
+UT,2,own_prev_std,Transportation,0.00149178107358063,0.151839895359236
+UT,2,own_prev_std,Unallocated,-0.000315029251346212,0.151839895359236
+UT,2,mob_weighted,Commercial & Mixed-Use Buildings,-0.0833220621657416,-0.416054107978298
+UT,2,mob_weighted,Education,-0.0114871298056318,-0.416054107978298
+UT,2,mob_weighted,Essential & Services,-0.0908692677013354,-0.416054107978298
+UT,2,mob_weighted,Food & Beverage,-0.0455180651337042,-0.416054107978298
+UT,2,mob_weighted,Industrial & Construction,-0.0272052431377046,-0.416054107978298
+UT,2,mob_weighted,Other,-0.00206889656608894,-0.416054107978298
+UT,2,mob_weighted,Recreation & Entertainment,-0.0303889739276697,-0.416054107978298
+UT,2,mob_weighted,Religious Organizations,-0.000164811775023002,-0.416054107978298
+UT,2,mob_weighted,Retail & Trade,-0.121023239274488,-0.416054107978298
+UT,2,mob_weighted,Transportation,-0.00400641849090783,-0.416054107978298
+UT,2,mob_weighted,Unallocated,-3.04306279116341e-15,-0.416054107978298
+UT,2,mob_spatial_lag_std,Commercial & Mixed-Use Buildings,-0.0123032047674091,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Education,-0.00150157525540127,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Essential & Services,-0.0266266992854374,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Food & Beverage,-0.0117839756283531,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Industrial & Construction,-0.006775288791444,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Other,-0.00245574658994968,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Recreation & Entertainment,-0.00955959153501677,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Religious Organizations,-0.000240662673856815,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Retail & Trade,-0.0256101099478175,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Transportation,-0.000831767363284058,-0.0976886218379698
+UT,2,mob_spatial_lag_std,Unallocated,-2.39766189489814e-16,-0.0976886218379698
+UT,3,ext_prev_std,Commercial & Mixed-Use Buildings,0.0538003379437713,0.259178580984414
+UT,3,ext_prev_std,Education,0.0120870305689637,0.259178580984414
+UT,3,ext_prev_std,Essential & Services,0.0526417540468483,0.259178580984414
+UT,3,ext_prev_std,Food & Beverage,0.0309721373544418,0.259178580984414
+UT,3,ext_prev_std,Industrial & Construction,0.0182568871510585,0.259178580984414
+UT,3,ext_prev_std,Other,0.00427346229871527,0.259178580984414
+UT,3,ext_prev_std,Recreation & Entertainment,0.0327446476281626,0.259178580984414
+UT,3,ext_prev_std,Religious Organizations,3.57078857014584e-05,0.259178580984414
+UT,3,ext_prev_std,Retail & Trade,0.052495195889346,0.259178580984414
+UT,3,ext_prev_std,Transportation,0.00188030986710184,0.259178580984414
+UT,3,ext_prev_std,Unallocated,-8.88964969665601e-06,0.259178580984414
+UT,3,own_prev_std,Commercial & Mixed-Use Buildings,0.0645882389556097,0.365572460197881
+UT,3,own_prev_std,Education,0.0114257013649144,0.365572460197881
+UT,3,own_prev_std,Essential & Services,0.086226108887098,0.365572460197881
+UT,3,own_prev_std,Food & Beverage,0.0448334891156197,0.365572460197881
+UT,3,own_prev_std,Industrial & Construction,0.0245867447737075,0.365572460197881
+UT,3,own_prev_std,Other,0.002809352570004,0.365572460197881
+UT,3,own_prev_std,Recreation & Entertainment,0.0276384685619282,0.365572460197881
+UT,3,own_prev_std,Religious Organizations,0.000178655409033278,0.365572460197881
+UT,3,own_prev_std,Retail & Trade,0.101617446646791,0.365572460197881
+UT,3,own_prev_std,Transportation,0.00302427771199654,0.365572460197881
+UT,3,own_prev_std,Unallocated,-0.00135602379882032,0.365572460197881
+UT,3,mob_weighted,Commercial & Mixed-Use Buildings,0.068485231821923,0.354581366348628
+UT,3,mob_weighted,Education,0.0122465457990997,0.354581366348628
+UT,3,mob_weighted,Essential & Services,0.079113077174225,0.354581366348628
+UT,3,mob_weighted,Food & Beverage,0.043048059768536,0.354581366348628
+UT,3,mob_weighted,Industrial & Construction,0.0239272477848665,0.354581366348628
+UT,3,mob_weighted,Other,0.00171802688454571,0.354581366348628
+UT,3,mob_weighted,Recreation & Entertainment,0.027645311033221,0.354581366348628
+UT,3,mob_weighted,Religious Organizations,0.00013027598906842,0.354581366348628
+UT,3,mob_weighted,Retail & Trade,0.0953785862398821,0.354581366348628
+UT,3,mob_weighted,Transportation,0.00288900385325762,0.354581366348628
+UT,3,mob_weighted,Unallocated,2.518028686591e-15,0.354581366348628
+UT,3,mob_spatial_lag_std,Commercial & Mixed-Use Buildings,0.0130989215950226,0.109755164449324
+UT,3,mob_spatial_lag_std,Education,0.00200462584964171,0.109755164449324
+UT,3,mob_spatial_lag_std,Essential & Services,0.0311988391990355,0.109755164449324
+UT,3,mob_spatial_lag_std,Food & Beverage,0.0142015382529482,0.109755164449324
+UT,3,mob_spatial_lag_std,Industrial & Construction,0.00741957209601579,0.109755164449324
+UT,3,mob_spatial_lag_std,Other,0.00270114667884542,0.109755164449324
+UT,3,mob_spatial_lag_std,Recreation & Entertainment,0.0101148850195431,0.109755164449324
+UT,3,mob_spatial_lag_std,Religious Organizations,0.000351061748628502,0.109755164449324
+UT,3,mob_spatial_lag_std,Retail & Trade,0.0277788346427334,0.109755164449324
+UT,3,mob_spatial_lag_std,Transportation,0.000885739366909534,0.109755164449324
+UT,3,mob_spatial_lag_std,Unallocated,3.26905402000542e-16,0.109755164449324
