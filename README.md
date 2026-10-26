@@ -64,9 +64,16 @@ The analysis is a sequence of scripts in `analysis/`, each run from the reposito
 
 ### Computing requirements
 
-Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million cell-days, so its stages need a large-memory machine. Stages 09–14 used 24 cores and 250–700 GB of memory per wave, each finishing within 24 hours. The environment variable `INLA_THREADS` sets the INLA threads. The code needs R 4.4 or later, and the reported results used INLA 26.8.7. The required packages are:
+Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million cell-days, so its stages need a large-memory machine. Stages 09–14 used 24 cores and 250–700 GB of memory per wave, each finishing within 24 hours. The environment variable `INLA_THREADS` sets the INLA threads. The code needs R 4.4 or later, and the reported results used INLA 26.8.7. To install the required packages, run in R:
 
-`data.table`, `R.utils`, `sf`, `spdep`, `INLA`, `arrow`, `Matrix`, `igraph`, `RANN`, `rgeoda`, `lubridate`, `terra`, `exactextractr`, `DBI`, `duckdb`, `jsonlite`; for `make_figures.R` also `ggplot2`, `patchwork`, `scales`, `scico` and `surveillance`.
+```r
+install.packages(c("data.table", "R.utils", "sf", "spdep", "arrow", "Matrix", "igraph", "RANN", "rgeoda",
+                   "lubridate", "terra", "exactextractr", "DBI", "duckdb", "jsonlite",
+                   "ggplot2", "patchwork", "scales", "scico", "surveillance"))
+install.packages("INLA", repos = c(getOption("repos"), INLA = "https://inla.r-inla-download.org/R/stable"), dep = TRUE)
+```
+
+`make_figures.R` alone needs only `data.table`, `R.utils`, `sf`, `ggplot2`, `patchwork`, `scales`, `scico` and `surveillance`.
 
 ### Randomness
 
