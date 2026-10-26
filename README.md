@@ -1,6 +1,6 @@
 # Bayesian Spatiotemporal Attribution of COVID-19 Risk to Human Mobility Across Spatial Resolutions
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/iprincegh/COVID-19-NYC-Utah/binder?urlpath=rstudio)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/iprincegh/COVID-19-NYC-Utah/binder?urlpath=rstudio) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![R ≥ 4.4](https://img.shields.io/badge/R-%E2%89%A5%204.4-276DC3.svg)](https://www.r-project.org/)
 
 Code and results for the paper by Prince Oppong Boakye, Poshan Niraula and Edzer Pebesma (Institute for Geoinformatics, University of Münster).
 
@@ -25,7 +25,7 @@ This writes `figures/` and `tables/` (CSV) in under a minute. Without the licens
 | `supplementary_data_1_amlp_by_category.csv` | Supplementary Data 1 |
 | `pit_calibration_tests.csv`, `forecast_*.csv` | calibration tests and the naive-forecast benchmark |
 
-To draw the journal figures in the browser without installing anything, click the Binder badge at the top. It opens the [`binder` branch](https://github.com/iprincegh/COVID-19-NYC-Utah/tree/binder) in RStudio, where `source("make_figures.R")` draws them.
+The Binder badge opens the [`binder` branch](https://github.com/iprincegh/COVID-19-NYC-Utah/tree/binder) in RStudio, where `source("make_figures.R")` draws the figures without any local installation.
 
 ## Running the full analysis
 
@@ -54,7 +54,7 @@ The analysis is a sequence of scripts in `analysis/`, each run from the reposito
 
 ### Computing requirements
 
-Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million cell-days, so its stages need a large-memory machine. Stages 09–14 used 24 cores and 250–700 GB of memory per wave, each finishing within 24 hours. The environment variable `INLA_THREADS` sets the INLA threads. The code needs R 4.4 or later, and the reported results used INLA 26.8.7. To install the required packages, run in R:
+Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million cell-days, so its stages need a large-memory machine. Stages 09–14 used 24 cores and 250–700 GB of memory per wave, each finishing within 24 hours. The environment variable `INLA_THREADS` sets the INLA threads. The reported results used INLA 26.8.7. To install the required packages, run in R:
 
 ```r
 install.packages(c("data.table", "R.utils", "sf", "spdep", "arrow", "Matrix", "igraph", "RANN", "rgeoda",
@@ -88,11 +88,7 @@ Input data go in `data/`, at the paths set in `R/setup.R`. All sources except th
 | Bridges, subway, roads (NYC neighbour graph) | NYC DOT Bridge Ratings (NYC Open Data); MTA Subway Stations (Open NY); 2016 New York City Subway Routes (NYU Spatial Data Repository); US Census TIGER/Line 2023 primary and secondary roads | `data/transport/` |
 | POI visits | Advan Weekly Patterns Plus (commercial licence) | `data/advan_weekly_plus/` |
 
-The Advan data cannot be redistributed and are available from [Advan](https://advanresearch.com) under a commercial licence. `results/` contains no Advan records: it holds model outputs, case counts and boundaries.
-
-## Licence
-
-Code: MIT licence (`LICENSE`). Each data source keeps its own licence.
+The Advan data cannot be redistributed and are available from [Advan](https://advanresearch.com) under a commercial licence. `results/` contains no Advan records: it holds model outputs, case counts and boundaries. Each data source keeps its own licence.
 
 ## Contact
 
