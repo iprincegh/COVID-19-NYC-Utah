@@ -14,6 +14,10 @@ Rscript make_figures.R
 
 This writes `figures/` and `tables/` (CSV) in under a minute. The licensed visit data are not included, so Figure 2 shows reported cases only. If the visit stages have been run (see below), Figure 2 also shows POI visits.
 
+To draw the journal figures in the browser without installing anything, open the [`binder` branch](https://github.com/iprincegh/COVID-19-NYC-Utah/tree/binder) in Binder and run `source("make_figures.R")` in the R console:
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/iprincegh/COVID-19-NYC-Utah/binder?urlpath=rstudio)
+
 | Output | Content |
 |---|---|
 | `fig01`–`fig09` | main-text Figures 1–9 |
