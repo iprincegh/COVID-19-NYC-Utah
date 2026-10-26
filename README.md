@@ -1,8 +1,8 @@
 # Journal figures: Bayesian Spatiotemporal Attribution of COVID-19 Risk to Human Mobility Across Spatial Resolutions
 
-This branch draws the figures of the paper by Prince Oppong Boakye, Poshan Niraula and Edzer Pebesma (Institute for Geoinformatics, University of Münster) from the model outputs in `results/`. The full analysis code is on the [`main` branch](https://github.com/iprincegh/COVID-19-NYC-Utah).
-
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/iprincegh/COVID-19-NYC-Utah/binder?urlpath=rstudio)
+
+This branch draws the figures of the paper by Prince Oppong Boakye, Poshan Niraula and Edzer Pebesma (Institute for Geoinformatics, University of Münster) from the model outputs in `results/`. The full analysis code is on the [`main` branch](https://github.com/iprincegh/COVID-19-NYC-Utah).
 
 Click the badge to open RStudio in the browser, then run in the R console:
 
