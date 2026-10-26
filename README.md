@@ -1,5 +1,7 @@
 # Bayesian Spatiotemporal Attribution of COVID-19 Risk to Human Mobility Across Spatial Resolutions
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/iprincegh/COVID-19-NYC-Utah/binder?urlpath=rstudio)
+
 Code and results for the paper by Prince Oppong Boakye, Poshan Niraula and Edzer Pebesma (Institute for Geoinformatics, University of Münster).
 
 The analysis models COVID-19 cases in three waves (March–May 2020, December 2020–February 2021 and December 2021–February 2022) at two resolutions. New York City (NYC) uses 100 m grid cells, with weekly cases for Modified ZIP Code Tabulation Areas (MODZCTAs) allocated to cells by population. Utah uses daily county counts. Bayesian spatiotemporal models fitted with INLA combine a BYM2 spatial random effect, a random-walk temporal random effect, a Type IV space-time interaction and covariates built from point-of-interest (POI) visit data. The Proportion of Cases Attributable to Mobility (PCAtM) is estimated in-sample and under spatial holdouts.
@@ -14,10 +16,6 @@ Rscript make_figures.R
 
 This writes `figures/` and `tables/` (CSV) in under a minute. Without the licensed visit data, Figure 2 shows reported cases only.
 
-To draw the journal figures in the browser without installing anything, open the [`binder` branch](https://github.com/iprincegh/COVID-19-NYC-Utah/tree/binder) in Binder and run `source("make_figures.R")` in the R console:
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/iprincegh/COVID-19-NYC-Utah/binder?urlpath=rstudio)
-
 | Output | Content |
 |---|---|
 | `fig01`–`fig09` | main-text Figures 1–9 |
@@ -26,6 +24,8 @@ To draw the journal figures in the browser without installing anything, open the
 | `tableS6`–`tableS11` | Supplementary Tables S6–S11 |
 | `supplementary_data_1_amlp_by_category.csv` | Supplementary Data 1 |
 | `pit_calibration_tests.csv`, `forecast_*.csv` | calibration tests and the naive-forecast benchmark |
+
+To draw the journal figures in the browser without installing anything, click the Binder badge at the top. It opens the [`binder` branch](https://github.com/iprincegh/COVID-19-NYC-Utah/tree/binder) in RStudio, where `source("make_figures.R")` draws them.
 
 ## Running the full analysis
 
