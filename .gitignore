@@ -1,0 +1,8 @@
+data/
+outputs/
+figures/
+tables/
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
