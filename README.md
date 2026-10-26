@@ -50,7 +50,7 @@ The analysis is a sequence of scripts in `analysis/`, each run from the reposito
 
 ### Computing requirements
 
-Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million cell-days, so its stages need a large-memory machine. Stages 09–14 used 24 cores and 250–700 GB of memory per wave, each finishing within 24 hours. The number of INLA threads is set with the environment variable `INLA_THREADS` (for example `4:6`). The reported results used INLA 26.8.7 with R 4.4.1 (NYC) and R 4.6.1 (Utah). R 4.4 or later is required for the native `%||%`. The required packages are:
+Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million cell-days, so its stages need a large-memory machine. Stages 09–14 used 24 cores and 250–700 GB of memory per wave, each finishing within 24 hours. The number of INLA threads is set with the environment variable `INLA_THREADS` (for example `4:6`). The reported results used INLA 26.8.7. R 4.4 or later is required for the native `%||%`. The required packages are:
 
 `data.table`, `sf`, `spdep`, `INLA`, `arrow`, `Matrix`, `igraph`, `RANN`, `rgeoda`, `lubridate`, `terra`, `exactextractr`, `DBI`, `duckdb`, `jsonlite`; for `make_figures.R` also `ggplot2`, `patchwork`, `scales`, `scico` and `surveillance`.
 
