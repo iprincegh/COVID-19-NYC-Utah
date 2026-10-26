@@ -1,7 +1,7 @@
 setting,wave,model,dispersion
-NY,1,NLMob_ST_IV,1.59221902900316
-NY,2,LinMob_ST_IV,1.51349499147972
-NY,3,LinMob_ST_IV,6.20319065672754
-UT,1,NLMob_ST_IV,52.2891861416224
-UT,2,NLMob_ST_IV,451.080604621004
-UT,3,NLMob_ST_IV,1549.06045239077
+NY,1,Nonlinear + interaction,1.59221902900316
+NY,2,Linear + interaction,1.51349499147972
+NY,3,Linear + interaction,6.20319065672754
+UT,1,Nonlinear + interaction,52.2891861416224
+UT,2,Nonlinear + interaction,451.080604621004
+UT,3,Nonlinear + interaction,1549.06045239077
