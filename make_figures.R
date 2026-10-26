@@ -7,7 +7,11 @@ suppressPackageStartupMessages({
 
 res <- function(f, ...) fread(file.path("results", f), ...)
 for (d in c("figures", "tables")) dir.create(d, showWarnings = FALSE)
-save_fig <- function(p, name, w, h, dpi = 600) ggsave(file.path("figures", name), p, width = w, height = h, dpi = dpi, bg = "white")
+# Saves each figure and, in an interactive session such as RStudio, also shows it in the Plots pane.
+save_fig <- function(p, name, w, h, dpi = 600) {
+  ggsave(file.path("figures", name), p, width = w, height = h, dpi = dpi, bg = "white")
+  if (interactive()) print(p)
+}
 save_tab <- function(x, name) fwrite(x, file.path("tables", name))
 
 WAVE_COLS <- c("Wave 1" = "#1B9E77", "Wave 2" = "#D95F02", "Wave 3" = "#7570B3")
