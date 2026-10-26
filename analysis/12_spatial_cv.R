@@ -1,6 +1,8 @@
 # Spatial cross-validation of the selected model on held-out reporting areas: five k-means blocks of
-# MODZCTAs in NYC, one county at a time in Utah. Case-derived covariates of held-out areas are rebuilt
-# without their own cases. Also pools the out-of-fold PCAtM over folds (case-weighted ratio of sums).
+# MODZCTAs in NYC, one county at a time in Utah. Infection-pressure covariates are rebuilt from origin case
+# rates with held-out areas' rates replaced by the training areas' rate in their borough (NYC) or the state
+# (Utah); in NYC the rebuild is at MODZCTA level on every cell. Also pools the out-of-fold PCAtM over folds
+# (case-weighted ratio of sums).
 source("R/setup.R")
 inla.setOption(num.threads = Sys.getenv("INLA_THREADS", "1:4"), inla.mode = "compact", smtp = "taucs")
 

@@ -10,6 +10,38 @@ MOB_COVS <- c("own_prev_std", "ext_prev_std", "mob_weighted", "mob_spatial_lag_s
 SHARE_OF <- c(own_prev_std = "local", ext_prev_std = "import", mob_weighted = "activity",
               log_rho_resid = "activity", mob_spatial_lag_std = "neighbour")
 
+# Joint draws of the requested fixed effects from the configurations stored by config = TRUE, used where
+# inla.posterior.sample() aborts (the NYC grid fits). Each configuration is a Gaussian approximation of the
+# latent field; the posterior is their mixture weighted by exp(log.posterior). Configurations with
+# non-finite variances or means more than 10 posterior sd from summary.fixed are dropped, which on the
+# grid leaves the modal configuration only.
+beta_draws_from_configs <- function(fit, covs, n) {
+  cf <- fit$misc$configs
+  k <- match(covs, cf$contents$tag)
+  stopifnot(!anyNA(k), all(cf$contents$length[k] == 1L))
+  off <- max(cf$contents$start + cf$contents$length - 1L) - nrow(cf$config[[1]]$Q)
+  pos <- cf$contents$start[k] - off
+  ref_m <- fit$summary.fixed[covs, "mean"]; ref_s <- fit$summary.fixed[covs, "sd"]
+  cmean <- function(cc) (cc$improved.mean %||% cc$mean)[pos]
+  ok <- vapply(cf$config, function(cc) {
+    d <- diag(as.matrix(cc$Qinv[pos, pos, drop = FALSE])); m <- cmean(cc)
+    all(is.finite(d)) && all(d > 0) && all(is.finite(m)) && all(abs(m - ref_m) <= 10 * pmax(ref_s, 1e-8))
+  }, logical(1))
+  stopifnot(any(ok))
+  lw <- vapply(cf$config, function(cc) cc$log.posterior, numeric(1))
+  w <- ifelse(ok, exp(lw - max(lw[ok])), 0)
+  pick <- sample.int(length(w), n, replace = TRUE, prob = w / sum(w))
+  B <- matrix(NA_real_, n, length(covs), dimnames = list(NULL, covs))
+  for (i in unique(pick)) {
+    S <- as.matrix(cf$config[[i]]$Qinv[pos, pos, drop = FALSE]); S <- (S + t(S)) / 2
+    e <- eigen(S, symmetric = TRUE)
+    A <- e$vectors %*% diag(sqrt(pmax(e$values, 0)), length(e$values))
+    r <- pick == i
+    B[r, ] <- matrix(cmean(cf$config[[i]]), sum(r), length(covs), byrow = TRUE) + matrix(rnorm(sum(r) * length(covs)), sum(r)) %*% t(A)
+  }
+  B
+}
+
 pcatm_wave <- function(wave_id, wave_months) {
   arm_dir <- get_wave_dir(state, wave_id)
   out_dir <- file.path(CONFIG$output_dir, "pcatm", paste0(state, "_", wave_id))
@@ -36,14 +68,17 @@ pcatm_wave <- function(wave_id, wave_months) {
   X <- as.matrix(d[, ..covs]); X[is.na(X)] <- 0
   w <- d$fitted; sw <- sum(w)
 
+  fit <- readRDS(file.path(arm_dir, res$inla_fit_path))
   set.seed(SEED)
-  smp <- INLA::inla.posterior.sample(N_POST, readRDS(file.path(arm_dir, res$inla_fit_path)), verbose = FALSE)
-  rn <- rownames(smp[[1]]$latent)
-  idx <- match(paste0(covs, ":1"), rn)
-  if (anyNA(idx)) idx <- match(covs, rn)
-  stopifnot(!anyNA(idx))
-  B <- t(matrix(vapply(smp, function(s) s$latent[idx, 1], numeric(length(idx))), nrow = length(idx)))
-  rm(smp)
+  smp <- tryCatch(INLA::inla.posterior.sample(N_POST, fit, verbose = FALSE), error = function(e) NULL)
+  B <- if (is.null(smp)) beta_draws_from_configs(fit, covs, N_POST) else {
+    rn <- rownames(smp[[1]]$latent)
+    idx <- match(paste0(covs, ":1"), rn)
+    if (anyNA(idx)) idx <- match(covs, rn)
+    stopifnot(!anyNA(idx))
+    t(matrix(vapply(smp, function(s) s$latent[idx, 1], numeric(length(idx))), nrow = length(idx)))
+  }
+  rm(smp, fit)
 
   # each term alone
   terms <- rbindlist(lapply(seq_along(covs), function(j) {

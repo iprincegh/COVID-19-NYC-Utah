@@ -2,8 +2,6 @@
 # residential density (MapPLUTO units per ha in NYC, building footprints per ha in Utah) and land use.
 source("R/setup.R")
 
-SF_TO_M2 <- 0.092903
-
 read_acs_age <- function(path) {
   dt <- fread(path, header = TRUE)[grepl("^[0-9]+US", GEO_ID)]
   out <- data.table(tract_geoid = sub(".*US", "", dt$GEO_ID), total_pop = as.numeric(dt$S0101_C01_001E),

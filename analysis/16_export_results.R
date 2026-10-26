@@ -123,7 +123,7 @@ out(per_arm(function(arm, dir) {
 cv_file <- function(name) per_arm(function(arm, dir) fread(file.path(dir, "validation", name), colClasses = list(character = "geo_id")))
 out(cv_file("spatial_cv_area_detail.csv")[, .(setting, wave, geo_id, fold, obs, pred_med, lo_draw, hi_draw, covered_draw)], "spatial_cv_areas.csv")
 out(cv_file("spatial_cv_primary_metrics.csv")[, .(setting, wave, n_areas = n_areas_scored_ok, MdAPE = area_MdAPE_ok, R2 = area_R2_ok,
-                                                  Cov95 = area_Cov95_ok, Cov95_draw = area_Cov95_draw_ok)], "spatial_cv_metrics.csv")
+                                                  Cov95 = area_Cov95_draw_ok)], "spatial_cv_metrics.csv")
 out(cv_file("pcatm_pooled.csv")[, .(setting, wave, pcatm = pcatm_pooled_mean, q05 = pcatm_pooled_q05, q95 = pcatm_pooled_q95)], "pcatm_holdout.csv")
 
 # in-sample PCAtM and the negative control

@@ -161,7 +161,7 @@ x <- ia[[3]]   # NYC Wave 3
 v <- if (x$degenerate) x$d$mean else x$d$demeaned
 q <- max(quantile(abs(v), 0.99), 1e-6)
 p6 <- ggplot(x$d[, val := pmin(pmax(v, -q), q)], aes(day, factor(rank), fill = val)) + geom_tile(width = 1) +
-  vik_mid(q, if (x$degenerate) "ST effect (log-RR)" else "Deviation from\ncluster's own mean", pretty(c(-q, q), n = 5)) +
+  vik_mid(q, if (x$degenerate) "ST effect (log-RR)" else "Deviation from\ncluster mean", pretty(c(-q, q), n = 5)) +
   scale_x_continuous(breaks = seq(0, 90, 15), expand = c(0, 0)) + labs(x = "Day of wave", y = "Spatial cluster") +
   theme_minimal(base_size = 7) +
   theme(panel.grid = element_blank(), legend.position = "bottom", legend.key.width = unit(0.9, "cm"), legend.key.height = unit(0.25, "cm"),
@@ -173,7 +173,7 @@ all_ia <- rbindlist(lapply(ia, function(x) x$d[, .(day, rank, val = pmin(pmax(de
   site = if (x$setting == "NY") sprintf("NYC (%d clusters)", x$K) else "Utah (counties)")]))
 pS2 <- ggplot(all_ia, aes(day, rank, fill = val)) + geom_tile(width = 1) +
   facet_grid(site ~ wave, scales = "free_y", space = "free_y") +
-  vik_mid(q, "Deviation from the unit's own mean (log RR)", pretty(c(-q, q), n = 5)) +
+  vik_mid(q, "Deviation from the unit mean (log RR)", pretty(c(-q, q), n = 5)) +
   scale_x_continuous(breaks = seq(0, 90, 15), expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0)) +
   labs(x = "Day of wave", y = "Spatial units, ordered by peak day") + theme_minimal(base_size = 11) +
   theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(),
@@ -394,5 +394,5 @@ save_tab(tcv[setting == "NY", .(wave, model = MODEL[model], cell_MdAPE = round(1
                                 corr = round(modzcta_total_Corr, 3), cov95 = round(100 * modzcta_total_Cov95, 1))], "tableS9_temporal_cv_nyc.csv")
 save_tab(tcv[setting == "UT", .(wave, model = MODEL[model], MdAPE = round(100 * MdAPE, 1), CRPS = round(CRPS, 2), cov95 = round(100 * Cov95, 1))],
          "tableS10_temporal_cv_utah.csv")
-save_tab(sw(res("spatial_cv_metrics.csv")[, .(setting, wave, areas = n_areas, MdAPE = round(MdAPE, 1), cov95 = round(100 * Cov95_draw))]),
+save_tab(sw(res("spatial_cv_metrics.csv")[, .(setting, wave, areas = n_areas, MdAPE = round(MdAPE, 1), cov95 = round(100 * Cov95))]),
          "tableS11_spatial_cv.csv")

@@ -12,7 +12,7 @@ The analysis models daily COVID-19 cases in New York City (100 m grid, cases rep
 Rscript make_figures.R
 ```
 
-This writes `figures/` and `tables/` (CSV) in a few minutes. The licensed visit data are not included, so Figure 2 shows reported cases only. If the visit stages have been run (see below), Figure 2 also shows POI visits.
+This writes `figures/` and `tables/` (CSV) in under a minute. The licensed visit data are not included, so Figure 2 shows reported cases only. If the visit stages have been run (see below), Figure 2 also shows POI visits.
 
 | Output | Content |
 |---|---|
@@ -56,7 +56,7 @@ Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million ce
 
 ### Randomness
 
-The case allocation to cells (stage 09) uses `set.seed(42)`. The spatial folds (stage 12) use k-means with `set.seed(42)`, and PCAtM draws (stage 13) use seed 20261008. Posterior predictive count draws in cross-validation are not seeded, so CV intervals and draw-based coverage vary slightly between runs.
+The case allocation to cells (stage 09) and the k-means spatial folds (stage 12) use `set.seed(42)`. Posterior draws in cross-validation use INLA seed 42 and are reproducible. In-sample PCAtM (stage 13) sets `set.seed(20261008)`. On the NYC grid fits, `inla.posterior.sample()` aborts, so the coefficients are drawn from the configurations stored with the fit, which is reproducible. Utah uses `inla.posterior.sample()`, which R's seed does not fully fix, so its PCAtM intervals vary slightly between runs.
 
 ## Data
 
@@ -66,7 +66,7 @@ Input data go in `data/`, at the paths set in `R/setup.R`. All sources except th
 |---|---|---|
 | NYC weekly case rates by MODZCTA, MODZCTA population | NYC DOHMH [coronavirus-data](https://github.com/nychealth/coronavirus-data): `caserate-by-modzcta.csv`, `data-by-modzcta.csv` | `data/us_CovidCases/caseRate/NYCcaserate-by-modzcta.csv`, `data/MODZCTA/data-by-modzcta.csv` |
 | MODZCTA boundaries | NYC Open Data, Modified Zip Code Tabulation Areas | `data/MODZCTA/` |
-| Block group to MODZCTA crosswalk | `cbg_geoid`, `modzcta`, `borough` | `data/us_CovidCases/caseRate/NYCcbg_to_modzcta.csv` |
+| Block group to MODZCTA crosswalk | NYC DOHMH [coronavirus-data](https://github.com/nychealth/coronavirus-data) (`cbg_geoid`, `modzcta`, `borough`) | `data/us_CovidCases/caseRate/NYCcbg_to_modzcta.csv` |
 | Utah county cases | [New York Times COVID-19 data](https://github.com/nytimes/covid-19-data) (`us-counties-2020/21/22.csv`) | `data/us_CovidCases/` |
 | Population | WorldPop constrained 100 m, R2025A, 2020–2022 | `data/population/` |
 | Age and employment | US Census ACS 5-year Tables S0101 and DP03, 2020–2022 | `data/demographics/` |
