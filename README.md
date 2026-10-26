@@ -27,6 +27,16 @@ To draw the journal figures in the browser without installing anything, open the
 | `supplementary_data_1_amlp_by_category.csv` | Supplementary Data 1 |
 | `pit_calibration_tests.csv`, `forecast_*.csv` | calibration tests and the naive-forecast benchmark |
 
+Names in `results/` follow the paper: models carry their Table 2 names, and the mobility-derived covariates are named after their symbols.
+
+| Name | Covariate |
+|---|---|
+| `rho_inf` | Local infection pressure, $\rho^{\mathrm{inf}}_{g,t}$ |
+| `rho_imp` | Imported exposure, $\rho^{\mathrm{imp}}_{g,t}$ |
+| `z_resid` | Same-day residual mobility, $z^{\mathrm{resid}}_{g,t}$ |
+| `L` | Lagged residual mobility, $L_{g,t}$ |
+| `Wz_bar` | Spatial mobility, $[\mathbf{W}\bar{\mathbf{z}}]_g$ |
+
 ## Running the full analysis
 
 The analysis is a sequence of scripts in `analysis/`, each run from the repository root. Each reads the outputs of the previous ones in `outputs/`. Stages that loop over waves take an optional setting and wave, for example `Rscript analysis/10_fit_models.R NY wave1`.

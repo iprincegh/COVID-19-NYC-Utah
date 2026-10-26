@@ -4,7 +4,29 @@
 source("R/setup.R")
 res_dir <- "results"
 dir.create(res_dir, showWarnings = FALSE)
-out <- function(x, name) fwrite(x, file.path(res_dir, name))
+# Names in results/ follow the paper: models as in Table 2, mobility-derived covariates by their symbols
+# (rho_inf, rho_imp, z_resid, L, Wz_bar) and the other covariates and hyperparameters by their table names.
+MODEL_NAME <- c(Base = "Base", Temp = "Non-spatial", LinMob = "Linear-mobility", NLMob = "Nonlinear-mobility",
+                LinMob_ST_IV = "Linear + interaction", NLMob_ST_IV = "Nonlinear + interaction")
+COV_NAME <- c(own_prev_std = "rho_inf", ext_prev_std = "rho_imp", log_rho_resid = "z_resid", mob_weighted = "L",
+              mob_spatial_lag_std = "Wz_bar", `(Intercept)` = "intercept", building_density_std = "building_density",
+              landuse_commercial = "commercial_land_use", commercial_x_weekend = "commercial_land_use_x_weekend",
+              log_repeat_ratio_std = "repeat_visit_ratio", log_contact_density_hourly_std = "contact_density",
+              log_daytime_pop_std = "daytime_population_density", ses_contrast_std = "ses_contrast",
+              pct_younger_std = "younger_share", pct_older_std = "older_share", pct_unemployed_std = "unemployment_rate",
+              pct_employed_std = "employment_rate", is_weekend = "weekend", is_holiday = "holiday")
+HYPER_NAME <- c(`Precision for idx_spatial` = "BYM2 precision", `Phi for idx_spatial` = "BYM2 mixing (phi)",
+                `Precision for idx_temporal` = "Temporal precision", `Precision for idx_st` = "Interaction precision",
+                `Precision for idx_st_cluster` = "Interaction precision",
+                `Precision for log_rho_idx` = "Nonlinear activity effect precision",
+                `size for the nbinomial observations (1/overdispersion)` = "Negative binomial size")
+readable <- function(x) {
+  x <- as.data.table(x)
+  for (m in list(list("model", MODEL_NAME), list("covariate", COV_NAME), list("term", COV_NAME), list("parameter", HYPER_NAME)))
+    if (m[[1]] %in% names(x)) x[, (m[[1]]) := fifelse(get(m[[1]]) %in% names(m[[2]]), unname(m[[2]][get(m[[1]])]), get(m[[1]]))]
+  x
+}
+out <- function(x, name) fwrite(readable(x), file.path(res_dir, name))
 arm_of <- function(x, arm) cbind(data.table(setting = sub("_.*", "", arm), wave = as.integer(sub(".*wave", "", arm))), x)
 per_arm <- function(f) rbindlist(lapply(WAVE_RUNS$run_id, function(arm) arm_of(f(arm, get_wave_dir(sub("_.*", "", arm), sub(".*_", "", arm))), arm)), fill = TRUE)
 best <- function(dir) readRDS(file.path(dir, "models", "best_model.rds"))

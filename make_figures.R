@@ -19,17 +19,14 @@ wave_f <- function(w) factor(paste("Wave", w), names(WAVE_COLS))
 SETTING <- c(NY = "NYC (100 m grid)", UT = "Utah (counties)")
 SITE <- c(NY = "New York City", UT = "Utah")
 POP <- c(NY = 8804190, UT = 3271616)   # 2020 Census resident population
-MODEL <- c(Base = "Base", Temp = "Non-spatial", LinMob = "Linear-mobility", NLMob = "Nonlinear-mobility",
-           LinMob_ST_IV = "Linear + interaction", NLMob_ST_IV = "Nonlinear + interaction")
-TERM <- c(own_prev_std = "Local infection pressure", ext_prev_std = "Imported exposure",
-          log_rho_resid = "Same-day residual mobility", mob_weighted = "Lagged residual mobility",
-          mob_spatial_lag_std = "Spatial mobility")
-COVARIATE <- c(TERM, log_repeat_ratio_std = "Repeat-visit ratio", building_density_std = "Building density",
-               log_contact_density_hourly_std = "Contact density (hourly)", log_daytime_pop_std = "Daytime population density",
-               landuse_commercial = "Commercial land use", commercial_x_weekend = "Commercial land use x weekend",
-               ses_contrast_std = "SES contrast", pct_younger_std = "Younger-population share",
-               pct_older_std = "Older-population share", pct_unemployed_std = "Unemployment rate",
-               pct_employed_std = "Employment rate", is_weekend = "Weekend", is_holiday = "Holiday")
+TERM <- c(rho_inf = "Local infection pressure", rho_imp = "Imported exposure", z_resid = "Same-day residual mobility",
+          L = "Lagged residual mobility", Wz_bar = "Spatial mobility")
+COVARIATE <- c(TERM, repeat_visit_ratio = "Repeat-visit ratio", building_density = "Building density",
+               contact_density = "Contact density (hourly)", daytime_population_density = "Daytime population density",
+               commercial_land_use = "Commercial land use", commercial_land_use_x_weekend = "Commercial land use × weekend",
+               ses_contrast = "SES contrast", younger_share = "Younger-population share",
+               older_share = "Older-population share", unemployment_rate = "Unemployment rate",
+               employment_rate = "Employment rate", weekend = "Weekend indicator", holiday = "Holiday indicator")
 borough <- function(g) {
   p <- substr(g, 1, 3)
   fcase(p %in% c("100", "101", "102"), "Manhattan", p == "103", "Staten Island", p == "104", "Bronx",
@@ -151,7 +148,7 @@ interaction <- function(s, w) {
   stopifnot(nrow(d) / K == te[setting == s & wave == w, uniqueN(idx_temporal)])   # grouped by day
   d[, `:=`(cluster = idx_st, day = (seq_len(.N) - 1L) %/% K + 1L)]
   d[, demeaned := mean - mean(mean), by = cluster]
-  prec <- hp[setting == s & wave == w & grepl("idx_st_cluster|Precision for idx_st$", parameter), mean][1]
+  prec <- hp[setting == s & wave == w & parameter == "Interaction precision", mean][1]
   degenerate <- prec > 1e5
   ord <- if (degenerate) d[, .(v = mean(mean)), by = cluster][order(-v), cluster]
          else d[, .(pk = day[which.max(demeaned)]), by = cluster][order(pk), cluster]
@@ -353,12 +350,12 @@ fmt_ci <- function(m, lo, hi, d = 1) {
 sw <- function(d) d[, setting := SETTING[setting]][]
 
 mc <- res("model_comparison.csv")[, dWAIC := WAIC - min(WAIC), by = .(setting, wave)][order(setting, wave, dWAIC)]
-save_tab(sw(mc[, .(setting, wave, model = paste0(MODEL[model], ifelse(dWAIC == 0, "*", "")), dWAIC = round(dWAIC, 2), RMSE = round(RMSE, 3))]),
+save_tab(sw(mc[, .(setting, wave, model = paste0(model, ifelse(dWAIC == 0, "*", "")), dWAIC = round(dWAIC, 2), RMSE = round(RMSE, 3))]),
          "table2_model_comparison.csv")
 
-fe <- res("fixed_effects.csv")[covariate != "(Intercept)"]
+fe <- res("fixed_effects.csv")[covariate != "intercept"]
 fe[, `:=`(covariate = factor(COVARIATE[covariate], unique(COVARIATE)), RR = fmt_ci(RR, RR_lower, RR_upper, 2))]
-nl <- selected[startsWith(model, "NLMob"), .(setting, wave, covariate = factor(TERM[["log_rho_resid"]], unique(COVARIATE)), RR = "nonlinear")]
+nl <- selected[startsWith(model, "Nonlinear"), .(setting, wave, covariate = factor(TERM[["z_resid"]], unique(COVARIATE)), RR = "nonlinear")]
 fe <- rbind(fe[, .(setting, wave, covariate, RR)], nl)
 for (s in c("NY", "UT"))
   save_tab(dcast(fe[setting == s], covariate ~ paste("Wave", wave), value.var = "RR", fill = "--"),
@@ -371,13 +368,13 @@ save_tab(sw(re[, .(setting, wave, units, sd_b = round(sd_b, 3), spatial_rr = spr
          "table5_random_effects.csv")
 
 pt <- res("pcatm_terms.csv")
-tab6 <- merge(merge(res("pcatm_summary.csv"), pt[term == "ext_prev_std", .(setting, wave, imp = pcatm, imp_lo = pcatm_q025, imp_hi = pcatm_q975)]),
+tab6 <- merge(merge(res("pcatm_summary.csv"), pt[term == "rho_imp", .(setting, wave, imp = pcatm, imp_lo = pcatm_q025, imp_hi = pcatm_q975)]),
               res("pcatm_holdout.csv")[, .(setting, wave, ho = pcatm, q05, q95)], by = c("setting", "wave"))
 save_tab(sw(tab6[, .(setting, wave, in_sample_95 = fmt_ci(100 * pcatm, 100 * pcatm_q025, 100 * pcatm_q975),
                      imported_exposure_only_95 = fmt_ci(100 * imp, 100 * imp_lo, 100 * imp_hi),
                      spatial_holdout_90 = fmt_ci(100 * ho, 100 * q05, 100 * q95))]), "table6_pcatm.csv")
 
-nb <- hp[grepl("^size for the nbinomial", parameter), .(setting, wave, nb_size = `0.5quant`)]
+nb <- hp[parameter == "Negative binomial size", .(setting, wave, nb_size = `0.5quant`)]
 fam <- merge(merge(selected, res("model_comparison.csv")[, .(setting, wave, model, Family)], by = c("setting", "wave", "model")), nb, by = c("setting", "wave"), all.x = TRUE)
 save_tab(sw(fam[, .(setting, wave, family = ifelse(Family == "nbinomial", "NegBin", "Poisson"), dispersion_ratio = round(dispersion, 2),
                     nb_size = ifelse(nb_size >= 10, round(nb_size), round(nb_size, 1)))]), "tableS6_family.csv")
@@ -387,16 +384,16 @@ save_tab(sw(nc[, .(setting, wave, rr_95 = sprintf("%.3f [%.3f, %.3f]", exp(mean)
          "tableS7_negative_control.csv")
 
 s8 <- merge(pt, res("pcatm_summary.csv")[, .(setting, wave, total_amlp = amlp)], by = c("setting", "wave"))
-s8 <- s8[order(setting, wave, match(term, c("own_prev_std", "ext_prev_std", "mob_spatial_lag_std", "mob_weighted", "log_rho_resid")))]
+s8 <- s8[order(setting, wave, match(term, c("rho_inf", "rho_imp", "Wz_bar", "L", "z_resid")))]
 save_tab(sw(rbind(s8[, .(setting, wave, covariate = TERM[term], pcatm_95 = fmt_ci(100 * pcatm, 100 * pcatm_q025, 100 * pcatm_q975),
                          share_of_amlp = round(100 * amlp / total_amlp, 1))],
                   tab6[, .(setting, wave, covariate = "Total", pcatm_95 = fmt_ci(100 * pcatm, 100 * pcatm_q025, 100 * pcatm_q975), share_of_amlp = 100)])[
                     order(setting, wave, covariate == "Total")]), "tableS8_pcatm_terms.csv")
 
 tcv <- res("temporal_cv_scores.csv")
-save_tab(tcv[setting == "NY", .(wave, model = MODEL[model], cell_MdAPE = round(100 * MdAPE, 1), modzcta_total_MdAPE = round(modzcta_total_MdAPE, 1),
+save_tab(tcv[setting == "NY", .(wave, model = model, cell_MdAPE = round(100 * MdAPE, 1), modzcta_total_MdAPE = round(modzcta_total_MdAPE, 1),
                                 corr = round(modzcta_total_Corr, 3), cov95 = round(100 * modzcta_total_Cov95, 1))], "tableS9_temporal_cv_nyc.csv")
-save_tab(tcv[setting == "UT", .(wave, model = MODEL[model], MdAPE = round(100 * MdAPE, 1), CRPS = round(CRPS, 2), cov95 = round(100 * Cov95, 1))],
+save_tab(tcv[setting == "UT", .(wave, model = model, MdAPE = round(100 * MdAPE, 1), CRPS = round(CRPS, 2), cov95 = round(100 * Cov95, 1))],
          "tableS10_temporal_cv_utah.csv")
 save_tab(sw(res("spatial_cv_metrics.csv")[, .(setting, wave, areas = n_areas, MdAPE = round(MdAPE, 1), cov95 = round(100 * Cov95))]),
          "tableS11_spatial_cv.csv")
