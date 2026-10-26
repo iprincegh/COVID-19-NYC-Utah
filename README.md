@@ -8,7 +8,7 @@ The analysis models COVID-19 cases in three waves (March–May 2020, December 20
 
 ## Reproducing the figures and tables
 
-`results/` holds the model outputs behind every figure and table. To redraw them, run from the repository root:
+`results/` holds the model outputs behind every figure and table. To regenerate them, run this from the repository root:
 
 ```sh
 Rscript make_figures.R
