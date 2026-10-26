@@ -12,7 +12,7 @@ The analysis models COVID-19 cases in three waves (March–May 2020, December 20
 Rscript make_figures.R
 ```
 
-This writes `figures/` and `tables/` (CSV) in under a minute. The licensed visit data are not included, so Figure 2 shows reported cases only. If the visit stages have been run (see below), Figure 2 also shows POI visits.
+This writes `figures/` and `tables/` (CSV) in under a minute. Without the licensed visit data, Figure 2 shows reported cases only.
 
 To draw the journal figures in the browser without installing anything, open the [`binder` branch](https://github.com/iprincegh/COVID-19-NYC-Utah/tree/binder) in Binder and run `source("make_figures.R")` in the R console:
 
@@ -51,26 +51,26 @@ The analysis is a sequence of scripts in `analysis/`, each run from the reposito
 | 06 | `06_infection_pressure.R` | infection pressure and visit activity per unit-day, trip-length kernels (Supplementary Table S2) |
 | 07 | `07_spatial_covariates.R` | cell-level visit covariates |
 | 08 | `08_demographics.R` | ACS shares, building density, land use |
-| 09 | `09_model_data.R` | unit-day model data, NYC weekly observations, the neighbour graph, and local infection pressure and imported exposure pooled to nearby grid cells |
+| 09 | `09_model_data.R` | unit-day model data, NYC weekly observations, neighbour graph, pooled infection pressure |
 | 10 | `10_fit_models.R` | six model variants per wave and the WAIC-selected model |
 | 11 | `11_temporal_cv.R` | rolling-origin forecasts |
-| 12 | `12_spatial_cv.R` | spatial holdouts and PCAtM under spatial holdouts |
+| 12 | `12_spatial_cv.R` | spatial holdouts and holdout PCAtM |
 | 13 | `13_pcatm.R` | in-sample PCAtM, per covariate and by POI category |
 | 14 | `14_negative_control.R` | negative-control refit |
-| 15 | `15_diagnostics.R` | share of visits from within the destination's reporting area, and the within-MODZCTA variation reported in the Results |
+| 15 | `15_diagnostics.R` | diagnostics quoted in the Results |
 | 16 | `16_export_results.R` | `results/` for `make_figures.R` |
 
 `R/` contains the shared functions. `setup.R` holds the configuration and file paths, `data.R` input handling and population offsets, `covariates.R` covariate construction, `adjacency.R` the neighbour graph, `model.R` the INLA models and `validation.R` cross-validation.
 
 ### Computing requirements
 
-Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million cell-days, so its stages need a large-memory machine. Stages 09–14 used 24 cores and 250–700 GB of memory per wave, each finishing within 24 hours. The number of INLA threads is set with the environment variable `INLA_THREADS` (for example `4:6`). The reported results used INLA 26.8.7. R 4.4 or later is required for the native `%||%`. The required packages are:
+Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million cell-days, so its stages need a large-memory machine. Stages 09–14 used 24 cores and 250–700 GB of memory per wave, each finishing within 24 hours. The environment variable `INLA_THREADS` sets the INLA threads. The code needs R 4.4 or later, and the reported results used INLA 26.8.7. The required packages are:
 
 `data.table`, `R.utils`, `sf`, `spdep`, `INLA`, `arrow`, `Matrix`, `igraph`, `RANN`, `rgeoda`, `lubridate`, `terra`, `exactextractr`, `DBI`, `duckdb`, `jsonlite`; for `make_figures.R` also `ggplot2`, `patchwork`, `scales`, `scico` and `surveillance`.
 
 ### Randomness
 
-The case allocation to cells (stage 09) and the k-means spatial folds (stage 12) use `set.seed(42)`. Cross-validation draws use INLA seed 42 and are reproducible. In-sample PCAtM (stage 13) sets `set.seed(20261008)`. In the NYC grid fits, only the modal configuration stored with the fit is valid, so `inla.posterior.sample()` aborts and stage 13 draws the coefficients from that configuration. These draws are reproducible, and their intervals exclude hyperparameter uncertainty. Utah uses `inla.posterior.sample()`, whose draws depend on INLA's own random state, so its PCAtM intervals vary slightly between runs.
+The case allocation (stage 09) and the spatial folds (stage 12) use `set.seed(42)`, and the cross-validation draws use INLA seed 42. In-sample PCAtM (stage 13) uses `set.seed(20261008)`. In the NYC grid fits, only the modal configuration stored with the fit is valid, so stage 13 draws the coefficients from it, and the intervals exclude hyperparameter uncertainty. Utah's draws come from `inla.posterior.sample()`, whose own random state makes the PCAtM intervals vary slightly between runs.
 
 ## Data
 
@@ -78,7 +78,7 @@ Input data go in `data/`, at the paths set in `R/setup.R`. All sources except th
 
 | Data | Source | Path |
 |---|---|---|
-| NYC weekly case rates by MODZCTA, MODZCTA population | NYC DOHMH [coronavirus-data](https://github.com/nychealth/coronavirus-data): `caserate-by-modzcta.csv`, `data-by-modzcta.csv` | `data/us_CovidCases/caseRate/NYCcaserate-by-modzcta.csv`, `data/MODZCTA/data-by-modzcta.csv` |
+| NYC weekly case rates and population by MODZCTA | NYC DOHMH [coronavirus-data](https://github.com/nychealth/coronavirus-data) | `data/us_CovidCases/caseRate/NYCcaserate-by-modzcta.csv`, `data/MODZCTA/data-by-modzcta.csv` |
 | MODZCTA boundaries | NYC Open Data, Modified Zip Code Tabulation Areas | `data/MODZCTA/` |
 | Block group to MODZCTA crosswalk | NYC DOHMH [coronavirus-data](https://github.com/nychealth/coronavirus-data) (`cbg_geoid`, `modzcta`, `borough`) | `data/us_CovidCases/caseRate/NYCcbg_to_modzcta.csv` |
 | Utah county cases | [New York Times COVID-19 data](https://github.com/nytimes/covid-19-data) (`us-counties-2020/21/22.csv`) | `data/us_CovidCases/` |
