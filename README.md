@@ -56,7 +56,7 @@ Utah runs on a laptop in minutes. NYC has about 54,000 cells and five million ce
 
 ### Randomness
 
-The case allocation to cells (stage 09) and the k-means spatial folds (stage 12) use `set.seed(42)`. Posterior draws in cross-validation use INLA seed 42 and are reproducible. In-sample PCAtM (stage 13) sets `set.seed(20261008)`. On the NYC grid fits, `inla.posterior.sample()` aborts, so the coefficients are drawn from the configurations stored with the fit, which is reproducible. Utah uses `inla.posterior.sample()`, which R's seed does not fully fix, so its PCAtM intervals vary slightly between runs.
+The case allocation to cells (stage 09) and the k-means spatial folds (stage 12) use `set.seed(42)`. Cross-validation draws use INLA seed 42 and are reproducible. In-sample PCAtM (stage 13) sets `set.seed(20261008)`. In the NYC grid fits, only the modal configuration stored with the fit is valid, so `inla.posterior.sample()` aborts and stage 13 draws the coefficients from that configuration. These draws are reproducible, and their intervals exclude hyperparameter uncertainty. Utah uses `inla.posterior.sample()`, whose draws depend on INLA's own random state, so its PCAtM intervals vary slightly between runs.
 
 ## Data
 
